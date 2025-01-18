@@ -1,0 +1,63 @@
+let quizData = [
+    {
+        question: "What does NAV stand for in mutual funds?",
+        a: "Net Asset Value",
+        b: "Net Annual Value",
+        c: "New Asset Value",
+        d: "None of the above",
+        correct: "a",
+    },
+    {
+        question: "Which of the following is NOT a type of mutual fund?",
+        a: "Equity Mutual Funds",
+        b: "Debt Mutual Funds",
+        c: "Hybrid Mutual Funds",
+        d: "Fixed Income Funds",
+        correct: "d",
+    },
+    // Add more questions as needed
+];
+
+// Function to add a new question
+function addQuestion(question, a, b, c, d, correct) {
+    quizData.push({
+        question: question,
+        a: a,
+        b: b,
+        c: c,
+        d: d,
+        correct: correct,
+    });
+}
+
+// Function to edit an existing question
+function editQuestion(index, question, a, b, c, d, correct) {
+    if (index >= 0 && index < quizData.length) {
+        quizData[index] = {
+            question: question,
+            a: a,
+            b: b,
+            c: c,
+            d: d,
+            correct: correct,
+        };
+    } else {
+        console.log("Question index out of range.");
+    }
+}
+
+// Function to delete a question
+function deleteQuestion(index) {
+    if (index >= 0 && index < quizData.length) {
+        quizData.splice(index, 1);
+    } else {
+        console.log("Question index out of range.");
+    }
+}
+
+// Example usage
+addQuestion("What is the primary purpose of a Venn diagram in problem-solving?", "To show relationships between different sets", "To calculate averages", "To display financial data", "To represent time series data", "a");
+editQuestion(0, "What does NAV stand for in mutual funds?", "Net Asset Value", "Net Annual Value", "New Asset Value", "None of the above", "a");
+deleteQuestion(1); // Deletes the second question
+step 2
+
