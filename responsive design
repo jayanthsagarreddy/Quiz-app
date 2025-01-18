@@ -1,0 +1,73 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Responsive Quiz</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Quiz on Mutual Funds</h1>
+        <div id="question-container"></div>
+        <div class="navigation">
+            <button id="prevBtn" onclick="prevQuestion()">Previous</button>
+            <button id="nextBtn" onclick="nextQuestion()">Next</button>
+        </div>
+        <button id="submitBtn" onclick="submitQuiz()">Submit Quiz</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+.quiz-container {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+    max-width: 600px; /* Limit the width for larger screens */
+    margin: auto; /* Center the container */
+}
+
+h1 {
+    text-align: center;
+}
+
+.navigation {
+    display: flex;
+    justify-content: space-between; /* Space out buttons */
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 15px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+    flex: 1; /* Make buttons flexible */
+    margin: 0 5px; /* Add margin between buttons */
+}
+
+button:disabled {
+    background-color: #ccc;
+}
+
+/* Responsive Styles */
+@media (max-width: 600px) {
+    .quiz-container {
+        padding: 15px; /* Reduce padding on smaller screens */
+    }
+
+    button {
+        padding: 8px 10px; /* Smaller button padding */
+    }
+}
