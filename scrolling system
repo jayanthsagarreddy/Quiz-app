@@ -1,0 +1,109 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Quiz with Scrolling System</title>
+    <link rel="stylesheet" href="styles.css">
+</head>
+<body>
+    <div class="quiz-container">
+        <h1>Quiz on Mutual Funds</h1>
+        <div id="question-container"></div>
+        <div class="navigation">
+            <button id="prevBtn" onclick="prevQuestion()">Previous</button>
+            <button id="nextBtn" onclick="nextQuestion()">Next</button>
+        </div>
+        <button id="submitBtn" onclick="submitQuiz()">Submit Quiz</button>
+    </div>
+    <script src="script.js"></script>
+</body>
+</html>
+body {
+    font-family: Arial, sans-serif;
+    background-color: #f4f4f4;
+    margin: 0;
+    padding: 20px;
+}
+
+.quiz-container {
+    background: white;
+    padding: 20px;
+    border-radius: 5px;
+    box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+}
+
+.navigation {
+    margin-top: 20px;
+}
+
+button {
+    padding: 10px 15px;
+    margin: 5px;
+    border: none;
+    border-radius: 5px;
+    background-color: #007BFF;
+    color: white;
+    cursor: pointer;
+}
+
+button:disabled {
+    background-color: #ccc;
+}
+let quizData = [
+    {
+        question: "What does NAV stand for in mutual funds?",
+        a: "Net Asset Value",
+        b: "Net Annual Value",
+        c: "New Asset Value",
+        d: "None of the above",
+        correct: "a",
+    },
+    {
+        question: "Which of the following is NOT a type of mutual fund?",
+        a: "Equity Mutual Funds",
+        b: "Debt Mutual Funds",
+        c: "Hybrid Mutual Funds",
+        d: "Fixed Income Funds",
+        correct: "d",
+    },
+    // Add more questions as needed
+];
+
+let currentQuestionIndex = 0;
+
+function loadQuestion() {
+    const questionContainer = document.getElementById("question-container");
+    const currentQuestion = quizData[currentQuestionIndex];
+    questionContainer.innerHTML = `
+        <h2>${currentQuestion.question}</h2>
+        <label><input type="radio" name="answer" value="a"> ${currentQuestion.a}</label><br>
+        <label><input type="radio" name="answer" value="b"> ${currentQuestion.b}</label><br>
+        <label><input type="radio" name="answer" value="c"> ${currentQuestion.c}</label><br>
+        <label><input type="radio" name="answer" value="d"> ${currentQuestion.d}</label><br>
+    `;
+    document.getElementById("prevBtn").disabled = currentQuestionIndex === 0;
+    document.getElementById("nextBtn").disabled = currentQuestionIndex === quizData.length - 1;
+}
+
+function nextQuestion() {
+    if (currentQuestionIndex < quizData.length - 1) {
+        currentQuestionIndex++;
+        loadQuestion();
+    }
+}
+
+function prevQuestion() {
+    if (currentQuestionIndex > 0) {
+        currentQuestionIndex--;
+        loadQuestion();
+    }
+}
+
+function submitQuiz() {
+    // Logic to handle quiz submission
+    alert("Quiz submitted!");
+}
+
+// Load the first question on page load
+loadQuestion();
